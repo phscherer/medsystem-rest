@@ -10,11 +10,11 @@
 				<methodDoc>
 					<methodName>listeTodasAsCervejas</methodName>
 					<commentText><![CDATA[Lista as cervejas catalogadas]]></commentText>
-					
-					<responseDoc>						
+
+					<responseDoc>
 						<representations>
 							<representation element="cervejas" status="200"
-								mediaType="text/xml,application/xml,application/json">								
+								mediaType="text/xml,application/xml,application/json">
 								<doc>Esta é a representação padrão</doc>
 							</representation>
 						</representations>
@@ -23,10 +23,10 @@
 				<methodDoc>
 					<methodName>encontreCerveja</methodName>
 					<commentText><![CDATA[Localiza uma determinada cerveja em particular]]></commentText>
-					<responseDoc>						
+					<responseDoc>
 						<representations>
 							<representation element="cerveja" status="200"
-								mediaType="text/xml,application/xml,application/json">								
+								mediaType="text/xml,application/xml,application/json">
 								<doc>Este é o retorno padrão</doc>
 							</representation>
 							<representation status="404">
@@ -35,8 +35,8 @@
 						</representations>
 					</responseDoc>
 				</methodDoc>
-				
+
 			</methodDocs>
-		</classDoc>		
+		</classDoc>
 	</classDocs>
 </resourceDoc>
