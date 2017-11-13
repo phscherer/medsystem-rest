@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
-      http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
-	version="1.0">
+	http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="cervejaria" transaction-type="RESOURCE_LOCAL">
+		
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<class>br.com.medsystem.model.Consulta</class>
+		<class>br.com.medsystem.model.Doutor</class>
+		<class>br.com.medsystem.model.Usuario</class>
+		
 		<properties>
-
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
@@ -17,7 +23,7 @@
 			<property name="javax.persistence.jdbc.password" value="" />
 
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="create-update" />
 		</properties>
 	</persistence-unit>
 </persistence>
