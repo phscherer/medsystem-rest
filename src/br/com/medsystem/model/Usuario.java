@@ -30,8 +30,6 @@ public class Usuario implements IBean {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name="id", nullable=false, unique=true)
     private Long id;
 
     private String nomeUsuario;

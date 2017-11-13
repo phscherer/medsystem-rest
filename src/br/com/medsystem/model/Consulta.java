@@ -34,8 +34,6 @@ public class Consulta implements IBean {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name="id", nullable=false, unique=true)
     private Long id;
     
     @Temporal(TemporalType.TIMESTAMP)

@@ -9,7 +9,7 @@ import br.com.medsystem.model.IBean;
 public abstract class JpaDaoBase<T extends IBean> implements IDao<T> {
 
 	private final Class<T> classe;
-	protected static EntityManager em = new JpaUtil().getEntityManager();
+	protected static EntityManager em = new JPAUtil().getEntityManager();
 
 	@SuppressWarnings("unchecked")
 	public JpaDaoBase() {
@@ -17,7 +17,6 @@ public abstract class JpaDaoBase<T extends IBean> implements IDao<T> {
 	}
 
 	public void salva(T t) {
-		//Application.getUsuario().autoriza(Permissao.AdmProduto);
 		em.getTransaction().begin();
 		if (t.getId() == null)
 			em.persist(t);
