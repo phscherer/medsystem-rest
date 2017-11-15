@@ -32,7 +32,7 @@ public class Usuarios {
     public List<Link> getLinks() {
         List<Link> links = new ArrayList<>();
         for (Usuario usuario : getUsuarios()) {
-            Link link = Link.fromPath("usuarios/{nomeUsuario}")
+            Link link = Link.fromPath("usuarios/{nome}")
                     .rel("colecao")
                     .title(usuario.getNome())
                     .build(usuario.getNome());

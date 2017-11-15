@@ -20,7 +20,7 @@ import org.hibernate.envers.NotAudited;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name="Usuario.buscaPorNome",
-                query="SELECT u FROM Usuario u where u.nomeUsuario = :nomeUsuario"),
+                query="SELECT u FROM Usuario u where u.nome = :nome"),
     @NamedQuery(name="Usuario.verificaLogin",
                 query="SELECT u FROM Usuario u WHERE u.nomeUsuario = :nomeUsuario AND u.senha = :senha")
 })
