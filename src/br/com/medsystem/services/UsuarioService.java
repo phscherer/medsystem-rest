@@ -80,7 +80,7 @@ public class UsuarioService {
     @DELETE
     @Path("{nome}")
     public void apagarUsuario(@PathParam("nome") String nomeDeUsuario) {
-         TODO: usuarioDao.remove(nomeDeUsuario);
+         usuarioDao.remove(nomeDeUsuario);
     }
 
 }

@@ -16,9 +16,9 @@ public class DoutorDAO extends JpaDaoBase<Doutor> implements IDao<Doutor> {
         return null;
     }
     
-    public void remove(Long id) {
+    public void remove(String nome) {
         em.getTransaction().begin();
-        Query query = em.createQuery("DELETE FROM Doutor c WHERE c.id = :id ").setParameter("id", id);
+        Query query = em.createQuery("DELETE FROM Doutor c WHERE c.nome = :nome ").setParameter("nome", nome);
         query.executeUpdate();
         em.getTransaction().commit();
     }

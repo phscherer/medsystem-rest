@@ -11,7 +11,7 @@ public class DoutorDaoFactory {
         return instance;
     }
     
-    public DoutorDAO getConsultaDAO() {
+    public DoutorDAO getDoutorDAO() {
         if(this.doutorDao == null)
             this.doutorDao = new DoutorDAO();
         return this.doutorDao;
