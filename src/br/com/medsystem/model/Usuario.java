@@ -1,6 +1,7 @@
 package br.com.medsystem.model;
 
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,7 +14,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import org.hibernate.envers.NotAudited;
 
 @XmlRootElement
@@ -22,7 +26,7 @@ import org.hibernate.envers.NotAudited;
     @NamedQuery(name="Usuario.buscaPorNome",
                 query="SELECT u FROM Usuario u where u.nome = :nome"),
     @NamedQuery(name="Usuario.verificaLogin",
-                query="SELECT u FROM Usuario u WHERE u.nomeUsuario = :nomeUsuario AND u.senha = :senha")
+                query="SELECT u FROM Usuario u WHERE u.nomeUsuario = :nomeUsuario AND u.senha = :senha"),
 })
 
 @Entity
@@ -40,7 +44,21 @@ public class Usuario implements IBean {
     
     @NotAudited
     @OneToMany(mappedBy="paciente", cascade = CascadeType.ALL)
+    @XmlElementWrapper(name = "consultas")
+    @XmlElement(name = "consulta")
     private List<Consulta> consultasRelacionadas;
+    
+    public Usuario() {
+        super();
+    }
+    
+    public Usuario(String nomeUsuario, String senha, String nome, int idade, String genero) {
+        this.nomeUsuario = nomeUsuario;
+        this.senha = senha;
+        this.nome = nome;
+        this.idade = idade;
+        this.genero = genero;
+    }
     
     public List<Consulta> getConsultasRelacionadas() {
         return consultasRelacionadas;
