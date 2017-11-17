@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/json.js"></script>
+		<script src="js/login.js"></script>
+		
+		<title>MedSystem - Login</title>
+	</head>
+	<body>
+		<div class="container">
+			<form id="formLogin">
+				<div align="center">
+					<h1>Bem-vindo ao sistema</h1>
+					
+					<div class="form-group">
+						<label for="login">Login:</label>
+						<input class="form-control" style="width:300px" id="inputNomeUsuario" name="nomeUsuario" placeholder="Digite seu login..."/>
+					</div>
+		
+					<div class="form-group">
+						<label for="senha">Senha:</label>
+						<input type="password" class="form-control" style="width:300px" id="inputSenha" name="senha" placeholder="Digite sua senha..." />
+					</div>
+		
+					<button class="btn btn-primary" aria-pressed="true" onClick="enter();">Entrar</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
