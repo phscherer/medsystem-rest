@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MedSystem - Início</title>
+	
+	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	<link href="css/template.css" type="text/css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/json.js"></script>
+	<script>
+		$(function() {
+			$("#includedHeader").load("header.html");
+			$("#includedModal").load("modal.html");
+			$("#includedFooter").load("footer.html");
+		});
+	</script>
+</head>
+<body>
+	<div class="geral">
+		<div id="includedHeader"></div>
+		<form></form>
+		
+		<div id="includedModal"></div>
+		
+		<div class="footer">
+			<div id="includedFooter"></div>
+		</div>
+	</div>
+</body>
+</html>
