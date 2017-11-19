@@ -12,7 +12,8 @@ function enter() {
       sessionStorage.setItem("usuarioLogado", JSON.stringify(data.usuario));
       window.location.href = baseHost + "index.html";
     },
-    error: function(e) {
+    error: function(data) {
+      console.log(data);
       alert('Login ou senha inválidos, tente novamente!');
     }
   });
