@@ -19,6 +19,7 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
 import br.com.medsystem.dao.ConsultaDAO;
 import br.com.medsystem.dao.ConsultaDaoFactory;
+import br.com.medsystem.dao.UsuarioDAO;
 import br.com.medsystem.exceptions.ConsultaJaExisteException;
 import br.com.medsystem.model.Consulta;
 import br.com.medsystem.model.rest.Consultas;
@@ -58,8 +59,10 @@ public class ConsultaService {
     }
     
     @POST
-    public Response criarConsulta(Consulta consulta) {
+    @Path("usuario/{usuario_id}")
+    public Response criarConsulta(@QueryParam("usuario_id") Long idUsuario, Consulta consulta) {
         try {
+            consulta.setPaciente(new UsuarioDAO().buscaPorld(1l));
             consultaDao.salva(consulta);
         } catch (ConsultaJaExisteException e) {
             throw new WebApplicationException(Status.CONFLICT);
