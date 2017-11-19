@@ -42,7 +42,6 @@ public class Usuario implements IBean {
     private int idade;
     private String genero;
     
-    @NotAudited
     @OneToMany(mappedBy="paciente", cascade = CascadeType.ALL)
     @XmlElementWrapper(name = "consultas")
     @XmlElement(name = "consulta")
