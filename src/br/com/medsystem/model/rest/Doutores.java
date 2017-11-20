@@ -33,12 +33,13 @@ public class Doutores {
         List<Link> links = new ArrayList<>();
         for (Doutor doutor : getDoutores()) {
             Link link = Link.fromPath("doutores/{nome}")
-                    .rel("colecao")
+                    .rel("doutor")
                     .title(doutor.getNome())
                     .build(doutor.getNome());
             links.add(link);
         }
         return links;
     }
-
+    
+    public void setLinks(List<Link> links) {}
 }

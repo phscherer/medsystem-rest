@@ -33,11 +33,13 @@ public class Usuarios {
         List<Link> links = new ArrayList<>();
         for (Usuario usuario : getUsuarios()) {
             Link link = Link.fromPath("usuarios/{nome}")
-                    .rel("colecao")
+                    .rel("usuario")
                     .title(usuario.getNome())
                     .build(usuario.getNome());
             links.add(link);
         }
         return links;
     }
+    
+    public void setLinks(List<Link> links) {}
 }
