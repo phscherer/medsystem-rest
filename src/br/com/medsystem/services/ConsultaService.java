@@ -35,21 +35,21 @@ public class ConsultaService {
     private static final int TAMANHO_PAGINA = 10;
     
     @GET
-    @Path("{data}")
-    public Consultas encontreConsultaPorData(@PathParam("data") Date dataDaConsulta) {
-        return consultaDao.buscaPorData(dataDaConsulta);
+    @Path("{titulo}")
+    public Consulta encontreConsultaPorTitulo(@PathParam("titulo") String titulo) {
+        return consultaDao.buscaPorTitulo(titulo);
     }
     
     @GET
     @Path("/usuario/{usuario_id}")
     public Consultas encontreConsultaPorPaciente(@PathParam("usuario_id") Long idUsuario) {
-        return consultaDao.buscaPorPaciente(idUsuario);
+        return consultaDao.buscaPorPaciente(1l);
     }
     
     @GET
     @Path("/doutor/{doutor_id}")
     public Consultas encontreConsultaPorDoutor(@PathParam("doutor_id") Long idDoutor) {
-        return consultaDao.buscaPorDoutor(idDoutor);
+        return consultaDao.buscaPorDoutor(1l);
     }
     
     @GET
@@ -82,7 +82,7 @@ public class ConsultaService {
     @DELETE
     @Path("{id}")
     public void apagarConsulta(@PathParam("id") Long id) {
-        consultaDao.cancelarConsulta(id);
+        consultaDao.cancelarConsulta(1l);
     }
     
 }

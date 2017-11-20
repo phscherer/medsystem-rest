@@ -26,14 +26,6 @@ public class ConsultaDAO extends JpaDaoBase<Consulta> implements IDao<Consulta> 
         return null;
     }
     
-    public Consultas buscaPorData(Date dataConsulta) {
-        Query query = em.createNamedQuery("Consulta.buscaPorData").setParameter("dataConsulta", dataConsulta);
-        List<Consulta> consultas = query.getResultList();
-        if (!consultas.isEmpty())
-            return new Consultas(consultas);
-        return null;
-    }
-    
     public void cancelarConsulta(Long id) {
         em.getTransaction().begin();
         Query query = em.createQuery("DELETE FROM Consulta c WHERE c.id = :id ").setParameter("id", id);
@@ -41,5 +33,12 @@ public class ConsultaDAO extends JpaDaoBase<Consulta> implements IDao<Consulta> 
         em.getTransaction().commit();
     }
     
+    public Consulta buscaPorTitulo(String titulo) {
+        Query query = em.createNamedQuery("Consulta.buscaPorTitulo").setParameter("titulo", titulo);
+        List<Consulta> consultas = query.getResultList();
+        if (!consultas.isEmpty())
+            return consultas.get(0);
+        return null;
+    }
     
 }

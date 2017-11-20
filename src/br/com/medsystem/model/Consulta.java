@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name="Consulta.buscaPorId", query="SELECT c FROM Consulta c where c.id = :id "),
     @NamedQuery(name="Consulta.buscaPorPaciente", query="SELECT c FROM Consulta c where c.paciente = :paciente "),
     @NamedQuery(name="Consulta.buscaPorDoutor", query="SELECT c FROM Consulta c where c.doutor = :doutor "),
-    @NamedQuery(name="Consulta.buscaPorData", query="SELECT c FROM Consulta c where c.dataConsulta = :data_consulta ")
+    @NamedQuery(name="Consulta.buscaPorTitulo", query="SELECT c FROM Consulta c where c.titulo = :titulo")
 })
  
 

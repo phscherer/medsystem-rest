@@ -2,7 +2,6 @@ package br.com.medsystem.model.rest;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ws.rs.core.Link;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,12 +32,14 @@ private List<Consulta> consultas = new ArrayList<>();
     public List<Link> getLinks() {
         List<Link> links = new ArrayList<>();
         for (Consulta consulta : getConsultas()) {
-            Link link = Link.fromPath("consultas/{id}")
-                    .rel("colecao")
-                    .title(consulta.getId().toString())
-                    .build(consulta.getId().toString());
+            Link link = Link.fromPath("consultas/{titulo}")
+                    .rel("consulta")
+                    .title(consulta.getTitulo())
+                    .build(consulta.getTitulo());
             links.add(link);
         }
         return links;
     }
+    
+    public void setLinks(List<Link> links) {}
 }
