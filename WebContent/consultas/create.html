@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MedSystem - Agendar Consulta</title>
+
+<link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="../css/template.css" type="text/css" rel="stylesheet">
+<link href="../css/faces.css" type="text/css" rel="stylesheet">
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/json.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/consultas.js"></script>
+<script>
+  $(function() {
+    $("#includedHeader").load("../header.html");
+    $("#includedModal").load("../modal.html");
+    $("#includedFooter").load("../footer.html");
+  });
+</script>
+</head>
+<body>
+  <div class="geral">
+    <div id="includedHeader"></div>
+      <form id="addNewSerie">
+        <div class="form-group"><h2><span class="glyphicon glyphicon-pencil"></span> Agendar consulta</h2></div>
+        <br />
+        
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <label for="titulo">Titulo:</label>
+            <input type="text" class="form-control" name="titulo" placeholder="Titulo da consulta" />
+          </div>
+          <div class="form-group col-xs-3">
+            <label for="dataConsulta">Data Consulta:</label>
+            <input type="date" class="form-control" name="dataConsulta" placeholder="Data da consulta" pattern="dd/MM/yyyy"	/>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="form-group col-xs-9">
+            <label for="Observacoes">Observações:</label>
+            <textarea class="form-control" name="observacoes" rows="4" cols="50" ></textarea>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <input type="button" class="btn btn-success ui-icon-circle-plus" value="Salvar" onClick="agendarConsultas();">
+          <input type="button" class="btn btn-default" value="Voltar" data-dismiss="modal" onClick="goToPage('index.html')">
+        </div>
+      </form>
+      
+      <div id="includedModal"></div>
+      <div class="footer">
+        <div id="includedFooter"></div>
+      </div>
+  </div>
+</body>
+</html>
