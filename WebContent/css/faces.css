@@ -141,5 +141,9 @@
     height: 0;
 }
 
+form {
+  margin-left: 5px;
+}
+
 * html #menu             { zoom: 1; } /* IE6 */
 *:first-child+html #menu { zoom: 1; } /* IE7 */
