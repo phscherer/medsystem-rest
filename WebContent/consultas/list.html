@@ -4,9 +4,10 @@
 <meta charset="ISO-8859-1">
 <title>MedSystem - Consultas</title>
 
-<link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="../css/bootstrap.min.two.css" type="text/css" rel="stylesheet">
 <link href="../css/template.css" type="text/css" rel="stylesheet">
 <link href="../css/faces.css" type="text/css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/json.js"></script>
 <script src="../js/index.js"></script>
@@ -20,8 +21,25 @@
 </script>
 </head>
 <body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#" onClick="goToPage('index.html');">MedSystem</a>
+      <a class="navbar-brand" href="#"onClick="goToPage('index.html');">Perfil</a>
+      <a class="navbar-brand" href="#" onClick="goToPage('consultas/list-per-patient.html');">Consultas</a>
+      <a class="navbar-brand" href="#" onClick="">Doutores</a>
+      
+      <script>
+        exibirUsuarioLogado();
+      </script>
+      
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto"></ul>
+        <a class="navbar-brand" href="#">Logado como <span id="userLogado" name="userLogado"></span></a>
+        <a href="#" class="btn btn-outline-danger my-2 my-sm-0" role="button" aria-pressed="true" onClick="sair();">Sair</a>
+      </div>
+    </nav>
+  </header>
   <div class="geral">
-    <div id="includedHeader"></div>
       <form>
         <div class="container-fluid">
           <h1>Todas as Consultas</h1>

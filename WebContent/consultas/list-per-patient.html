@@ -4,9 +4,10 @@
 <meta charset="ISO-8859-1">
 <title>MedSystem - Minhas Consultas</title>
 
-<link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="../css/bootstrap.min.two.css" type="text/css" rel="stylesheet">
 <link href="../css/template.css" type="text/css" rel="stylesheet">
 <link href="../css/faces.css" type="text/css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/json.js"></script>
 <script src="../js/index.js"></script>
@@ -20,50 +21,95 @@
 </script>
 </head>
 <body>
-  <div class="geral">
-    <div id="includedHeader"></div>
-      <form>
-        <div class="container-fluid">
-          <h1>Minhas Consultas</h1>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="input-group">
-                <p>
-                  <a href="#" data-toggle="modal" data-target="#util-modal"  class="btn btn-primary" onClick="goToPage('consultas/create.html');" >
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Titulo</th>
-                  <th>Data</th>
-                  <th>Doutor</th>
-                </tr>
-              </thead>
-              <tbody id="consultasGrid">
-              </tbody>
-            </table>
-          </div>
-          <div class="form-group">
-            <input type="button" class="btn btn-default" data-dismiss="modal" value="Voltar" onClick="goToPage('index.html')"/>
-          </div>
-        </div>
-      </form>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#" onClick="goToPage('index.html');">MedSystem</a>
+      <a class="navbar-brand" href="#" onClick="goToPage('index.html');">Perfil</a>
+      <a class="navbar-brand" href="#" onClick="goToPage('consultas/list-per-patient.html');">Consultas</a>
+      <a class="navbar-brand" href="#" onClick="">Doutores</a>
       
-      <div id="includedModal"></div>
-      <div class="footer">
-        <div id="includedFooter"></div>
+      <script>
+        exibirUsuarioLogado();
+      </script>
+      
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto"></ul>
+        <a class="navbar-brand" href="#">Logado como <span id="userLogado" name="userLogado"></span></a>
+        <a href="#" class="btn btn-outline-danger my-2 my-sm-0" role="button" aria-pressed="true" onClick="sair();">Sair</a>
       </div>
+    </nav>
+  </header>
+  <div class="geral">
+       
+         <h1>Minhas Consultas</h1>
+         
+           <div class="row">
+             <div class="col-lg-6">
+               <div class="input-group">
+                 <p>
+                   <img src="../icons/note-icon.png" title="Agendar nova consulta" width="40px" height="40px" style="cursor: pointer; margin-left:5px" onClick="goToPage('consultas/create.html');">
+                 </p>
+               </div>
+             </div>
+           </div>
+           <div class="table-responsive">
+             <table class="table table-striped">
+               <thead>
+                 <tr>
+                   <th>ID</th>
+                   <th>Titulo</th>
+                   <th>Data</th>
+                   <th>Doutor</th>
+                 </tr>
+               </thead>
+               <tbody id="consultasGrid">
+               </tbody>
+             </table>
+           </div>
+           
+           <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	         <div class="modal-dialog" role="document">
+	           <div class="modal-content">
+	             <div class="modal-header">
+	               <h5 class="modal-title" id="editarModalTitulo"><span id="editarModalNomeConsulta"></span> - Atualizar</h5>
+	               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                 <span aria-hidden="true">&times;</span>
+	               </button>
+	             </div>
+	             <div class="modal-body">
+	               <form id="editarConsultaForm">
+	                 <div class="form-group">
+	                   <label>ID:</label>
+	                   <input type="text" class="form-control" id="editId" name="id" readonly/>
+	                   <label>Titulo:</label>
+	                   <input type="text" class="form-control" id="editTitulo" name="titulo"/>
+	                   <label>Data:</label>
+	                   <input type="text" class="form-control" id="editData" name="dataConsulta" pattern="dd/MM/yyyy"/>
+	                   <label>Observações:</label>
+	                   <textarea class="form-control" id="editObservacoes" name="observacoes" rows="4" cols="50"></textarea>
+	                 </div>
+	               </form>
+	             </div>
+	             <div class="modal-footer">
+	               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+	               <button type="button" class="btn btn-primary" onClick="salvarAtualizacaoConsulta();">Salvar</button>
+	             </div>
+	           </div>
+	         </div>
+	       </div>
+	       <div class="form-group">
+             <input type="button" class="btn btn-default" data-dismiss="modal" value="Voltar" onClick="goToPage('index.html')"/>
+           </div>
+       
+       <div id="includedModal"></div>
+       <div class="footer">
+         <div id="includedFooter"></div>
+       </div>
   </div>
   <script type="text/javascript">
     listConsultasPorPaciente();
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
