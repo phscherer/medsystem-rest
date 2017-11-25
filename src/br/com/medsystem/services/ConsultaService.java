@@ -73,9 +73,8 @@ public class ConsultaService {
     }
     
     @PUT
-    @Path("{data}")
-    public void atualizarConsulta(@PathParam("data") Date dataDaConsulta, Consulta consulta) {
-        consulta.setDataConsulta(dataDaConsulta);
+    public void atualizarConsulta(Consulta consulta) {
+        consulta.setPaciente(new UsuarioDAO().buscaPorld(1l));
         consultaDao.atualiza(consulta);
     }
 
