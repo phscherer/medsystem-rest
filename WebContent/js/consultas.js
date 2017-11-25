@@ -3,7 +3,7 @@ var hostConsultas = 'http://localhost:8080/medsystem-rest/services/';
 
 function agendarConsultas() {
   var userLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
-  var data = $('#addNewSerie').serializeJSON();
+  var data = $('#addNewConsulta').serializeJSON();
   data = "{\"consulta\":" + JSON.stringify(data) + "}";
   
   $.ajax({
@@ -12,13 +12,28 @@ function agendarConsultas() {
     contentType: 'application/json',
     data: data,
     success: function(data) {
-      $('#addNewSerie')[0].reset();
+      $('#addNewConsulta')[0].reset();
       alert('Consulta agendada com sucesso!');
     },
     error: function(data) {
       alert('Ocorreu um erro ao agendar a consulta!');
     }
   });
+}
+
+function cancelarConsulta(titulo) {
+  if (confirm('Deseja cancelar esta consulta?')) {
+    $.ajax({
+      url: hostConsultas + 'consultas/' + titulo,
+      type: 'DELETE',
+      success: function(data) {
+        listConsultasPorPaciente();
+      },
+      error: function(data) {
+        alert('Erro ao cancelar a consulta');
+      }
+    });
+  }
 }
 
 function listConsultasPorPaciente() {
@@ -89,6 +104,8 @@ function addConsultasNaGrid(consulta) {
                + '<td>' + consulta.titulo + '</td>'
                + '<td>' + consulta.dataConsulta + '</td>'
                + '<td>' + 'Dr. Foo Bar' + '</td>'
+               + "<td width='5%'><span class='glyphicon glyphicon-pencil' aria-hidden='true' style='cursor: pointer' onClick=''></td>"
+		       + "<td width='5%'><span class='glyphicon glyphicon-remove' aria-hidden='true' style='cursor: pointer' onClick='cancelarConsulta(\""+consulta.titulo+"\")'></td>"
            + '</tr>';
   $('#consultasGrid').append(data);
 }

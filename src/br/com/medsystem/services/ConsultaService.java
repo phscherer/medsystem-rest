@@ -80,9 +80,11 @@ public class ConsultaService {
     }
 
     @DELETE
-    @Path("{id}")
-    public void apagarConsulta(@PathParam("id") Long id) {
-        consultaDao.cancelarConsulta(1l);
+    @Path("{titulo}")
+    public void apagarConsulta(@PathParam("titulo") String titulo) {
+        consultaDao.cancelarConsultaPorTitulo(titulo);
     }
+    
+    
     
 }

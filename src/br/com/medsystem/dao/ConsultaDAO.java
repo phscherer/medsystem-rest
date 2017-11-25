@@ -33,6 +33,13 @@ public class ConsultaDAO extends JpaDaoBase<Consulta> implements IDao<Consulta> 
         em.getTransaction().commit();
     }
     
+    public void cancelarConsultaPorTitulo(String titulo) {
+        em.getTransaction().begin();
+        Query query = em.createQuery("DELETE FROM Consulta c WHERE c.titulo = :titulo ").setParameter("titulo", titulo);
+        query.executeUpdate();
+        em.getTransaction().commit();
+    }
+    
     public Consulta buscaPorTitulo(String titulo) {
         Query query = em.createNamedQuery("Consulta.buscaPorTitulo").setParameter("titulo", titulo);
         List<Consulta> consultas = query.getResultList();
