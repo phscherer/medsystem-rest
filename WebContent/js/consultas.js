@@ -141,7 +141,7 @@ function addConsultasNaGrid(consulta) {
   var data = '<tr>'
                + '<td>' + consulta.id + '</td>'
                + '<td>' + consulta.titulo + '</td>'
-               + '<td>' + consulta.dataConsulta + '</td>'
+               + '<td id="maskDataConsulta">' + consulta.dataConsulta + '</td>'
                + '<td>' + 'Dr. Foo Bar' + '</td>'
                + "<td width='5%'><img src='../icons/pencil-icon.png' title='Atualizar consulta' width='20px' height='20px' style='cursor: pointer' data-toggle='modal' data-target='#editarModal' onClick='carregarConsultaParaEdicao(\""+consulta.titulo+"\")'></td>"
 		       + "<td width='5%'><img src='../icons/trash-icon.png' title='Excluir consulta' width='20px' height='20px' style='cursor: pointer' onClick='cancelarConsulta(\""+consulta.titulo+"\")'></td>"
