@@ -61,9 +61,7 @@ public class DoutorService {
     }
     
     @PUT
-    @Path("{nome}")
-    public void atualizarDoutor(@PathParam("nome") String nome, Doutor doutor) {
-        doutor.setNome(nome);
+    public void atualizarDoutor(Doutor doutor) {
         doutorDao.atualiza(doutor);
     }
 

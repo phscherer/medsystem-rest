@@ -64,6 +64,35 @@ $(function() {
         </tbody>
       </table>
     </div>
+    
+    <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editarModalNome"><span id="editarModalNomeDoutor"></span> - Atualizar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editarDoutorForm">
+              <div class="form-group">
+                <label>ID:</label>
+                <input type="text" class="form-control" id="editId" name="id" readonly/>
+                <label>Nome:</label>
+                <input type="text" class="form-control" id="editNome" name="nome"/>
+                <label>Faixa Idade:</label>
+                <input type="text" class="form-control" id="editFaixaIdade" name="faixaIdade" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onClick="salvarAtualizacaoDoutor();">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="form-group">
       <input type="button" class="btn btn-default" data-dismiss="modal" value="Ver Consultas" onClick="goToPage('consultas/list-per-patient.html')"/>
       <input type="button" class="btn btn-default" data-dismiss="modal" value="Voltar" onClick="goToPage('index.html')"/>
@@ -76,5 +105,7 @@ $(function() {
   <script type="text/javascript">
     listTodosOsDoutores();
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>

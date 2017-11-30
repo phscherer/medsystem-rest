@@ -96,7 +96,6 @@ function carregarConsultaParaEdicao(titulo) {
       $('#editData').val(consulta.dataConsulta);
       $('#editObservacoes').val(consulta.observacoes);
       $('#editarModalNomeConsulta').html(consulta.titulo);
-      console.log('deu boa!');
     },
     error: function(data) {
       alert('Erro ao carregar a consulta para edição.');
