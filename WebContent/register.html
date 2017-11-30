@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MedSystem - Cadastro</title>
+
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/json.js"></script>
+<script src="js/login.js"></script>
+<script src="js/register.js"></script>
+<script src="js/index.js"></script>
+</head>
+<body>
+  <div class="container">
+    <form id="formCadastro">
+      <div align="center">
+        <h1>Cadastrar-se</h1>
+        <div class="form-group">
+          <label for="login">Login:</label>
+          <input class="form-control" style="width: 300px" id="inputNomeUsuario" name="nomeUsuario" placeholder="Informe seu login..." />
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha:</label>
+          <input type="password" class="form-control" style="width: 300px" id="inputSenha" name="senha" placeholder="Informe sua senha..." />
+        </div>
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input class="form-control" style="width: 300px" id="inputNome" name="nome" placeholder="Informe seu nome..." />
+        </div>
+        <div class="form-group">
+          <label for="idade">Idade:</label>
+          <input class="form-control" style="width: 100px" id="inputIdade" name="idade" placeholder="Sua idade..." />
+        </div>
+        <input type="button" value="Confirmar" class="btn btn-success" aria-pressed="true" onClick="criarUsuario();">
+        <input type="button" value="Cancelar" class="btn btn-danger" aria-pressed="true" onClick="goToPage('login.html');">
+      </div>
+    </form>
+  </div>
+</body>
+</html>
