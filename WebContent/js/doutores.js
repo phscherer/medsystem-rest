@@ -1,6 +1,26 @@
 var baseHost = 'http://localhost:8080/medsystem-rest/';
 var hostDoutores = 'http://localhost:8080/medsystem-rest/services/';
 
+function cadastrarDoutor() {
+  var userLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+  var data = $('#addDoutor').serializeJSON();
+  data = "{\"doutor\":" + JSON.stringify(data) + "}";
+  
+  $.ajax({
+    url: hostDoutores + 'doutores/',
+    type: 'POST',
+    contentType: 'application/json',
+    data: data,
+    success: function(data) {
+      $('#addDoutor')[0].reset();
+      alert('Doutor cadastrado com sucesso!');
+    },
+    error: function(data) {
+      alert('Ocorreu um erro ao tentar cadastrar o doutor!');
+    }
+  });
+}
+
 function listTodosOsDoutores() {
   $('#doutoresGrid').html('');
   

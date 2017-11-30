@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>MedSystem - Doutores</title>
+<title>MedSystem - Cadastrar Doutor</title>
 
 <link href="../css/bootstrap.min.two.css" type="text/css" rel="stylesheet">
 <link href="../css/template.css" type="text/css" rel="stylesheet">
@@ -13,11 +13,11 @@
 <script src="../js/index.js"></script>
 <script src="../js/doutores.js"></script>
 <script>
-$(function() {
-  $("#includedHeader").load("../header.html");
-  $("#includedModal").load("../modal.html");
-  $("#includedFooter").load("../footer.html");
-});
+  $(function() {
+    $("#includedHeader").load("../header.html");
+    $("#includedModal").load("../modal.html");
+    $("#includedFooter").load("../footer.html");
+  });
 </script>
 </head>
 <body>
@@ -38,43 +38,24 @@ $(function() {
       </div>
     </nav>
   </header>
-  <div class="geral">
-    <h1>Doutores Ativos</h1>
+  <form id="addDoutor" style="margin-left:20px">
+    <h2><img src="../icons/note-icon.png" width="40px" height="40px" style="margin-right:5px"> Cadastrar doutor</h2>
+    <br />
     
     <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <p>
-            <img src="../icons/note-icon.png" title="Cadastrar doutores" width="40px" height="40px" style="cursor: pointer; margin-left:5px" onClick="goToPage('doutores/create.html');">
-          </p>
-        </div>
+      <div class="form-group col-xs-6">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" name="nome" placeholder="Nome do doutor" />
+      </div>
+      <div class="form-group col-xs-3" style="margin-left:20px">
+        <label for="faixaIdade">Faixa de idade:</label>
+        <input type="text" class="form-control" name="faixaIdade" placeholder="Faixa de idade" />
       </div>
     </div>
-    
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Faixa Idade</th>
-          </tr>
-        </thead>
-        <tbody id="doutoresGrid">
-        </tbody>
-      </table>
-    </div>
     <div class="form-group">
-      <input type="button" class="btn btn-default" data-dismiss="modal" value="Ver Consultas" onClick="goToPage('consultas/list-per-patient.html')"/>
-      <input type="button" class="btn btn-default" data-dismiss="modal" value="Voltar" onClick="goToPage('index.html')"/>
+      <input type="button" class="btn btn-success ui-icon-circle-plus" value="Salvar" onClick="cadastrarDoutor();">
+      <input type="button" class="btn btn-default" value="Voltar" data-dismiss="modal" onClick="goToPage('index.html')">
     </div>
-    <div id="includedModal"></div>
-    <div class="footer">
-      <div id="includedFooter"></div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    listTodosOsDoutores();
-  </script>
+  </form>
 </body>
 </html>
