@@ -40,7 +40,6 @@ public class Usuario implements IBean {
     private String senha;
     private String nome;
     private int idade;
-    private String genero;
     
     @OneToMany(mappedBy="paciente", cascade = CascadeType.ALL)
     @XmlElementWrapper(name = "consultas")
@@ -51,12 +50,11 @@ public class Usuario implements IBean {
         super();
     }
     
-    public Usuario(String nomeUsuario, String senha, String nome, int idade, String genero) {
+    public Usuario(String nomeUsuario, String senha, String nome, int idade) {
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.nome = nome;
         this.idade = idade;
-        this.genero = genero;
     }
     
     public List<Consulta> getConsultasRelacionadas() {
@@ -81,14 +79,6 @@ public class Usuario implements IBean {
 
     public void setIdade(int idade) {
         this.idade = idade;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public String getNomeUsuario() {

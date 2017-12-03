@@ -44,7 +44,7 @@ function listTodosOsDoutores() {
     type: 'GET',
     contentType: 'application/json',
     success: function(data) {
-    	if ($.isArray(data.doutores.link)) {
+      if ($.isArray(data.doutores.link)) {
         for (var i = 0; i < data.doutores.link.length; i++) {
           var link = data.doutores.link[i]['@href'];
           segueLinkDoutor(link);
@@ -98,6 +98,7 @@ function salvarAtualizacaoDoutor() {
 }
 
 function segueLinkDoutor(link) {
+  console.log('link: ' + link);
   $.ajax({
     url: hostDoutores + link,
     type: 'GET',
@@ -108,6 +109,48 @@ function segueLinkDoutor(link) {
       console.log('Erro ao listar o doutor de ID ' + data.doutor.id);
     }
   });
+}
+
+function listTodosOsNomesDoutores() {
+  $('#doutoresGrid').html('');
+  
+  $.ajax({
+    url: hostDoutores + 'doutores',
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(data) {
+      if ($.isArray(data.doutores.link)) {
+        for (var i = 0; i < data.doutores.link.length; i++) {
+          var link = data.doutores.link[i]['@href'];
+          segueLinkNomeDoutor(link);
+        }
+      } else {
+        var link = data.doutores.link['@href'];
+        segueLinkNomeDoutor(link);
+      }
+    },
+    error: function() {
+      alert('Erro ao carregar os doutores cadastrados!');
+    }
+  });
+}
+
+function segueLinkNomeDoutor(link) {
+  $.ajax({
+    url: hostDoutores + link,
+    type: 'GET',
+    success: function(data) {
+    	adicionarDoutoresNoSelect(data.doutor);
+    },
+    error: function(data) {
+      console.log('Erro ao listar o doutor de ID ' + data.doutor.id);
+    }
+  });
+}
+
+function adicionarDoutoresNoSelect(doutor) {
+  var data = '<option id="optionDoutor" value="' + doutor.nome + '" label="' + doutor.nome + '" />';
+  $('#selectDoutor').append(data);
 }
 
 function addDoutoresNaGrid(doutor) {

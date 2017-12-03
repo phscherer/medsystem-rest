@@ -10,7 +10,8 @@ function enter() {
     data: data,
     success: function(data) {
       sessionStorage.setItem("usuarioLogado", JSON.stringify(data.usuario));
-      window.location.href = baseHost + "index.html";
+      alert('Bem vindo, ' + data.usuario.nome + '!');
+      window.location.href = baseHost + "consultas/list-per-patient.html";
     },
     error: function(data) {
       console.log(data);

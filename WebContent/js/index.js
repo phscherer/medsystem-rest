@@ -3,7 +3,7 @@ var host = 'http://localhost:8080/medsystem-rest/services/usuarios/';
 
 function exibirUsuarioLogado() {
   var user = JSON.parse(sessionStorage.getItem('usuarioLogado'));
-  $('#userLogado').html(user.nome);
+  alert('Bem vindo, ' + user.nome + '!');
 }
 
 function sair() {
