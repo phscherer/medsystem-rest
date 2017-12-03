@@ -43,13 +43,13 @@ public class ConsultaService {
     @GET
     @Path("/usuario/{usuario_id}")
     public Consultas encontreConsultaPorPaciente(@PathParam("usuario_id") Long idUsuario) {
-        return consultaDao.buscaPorPaciente(1l);
+        return consultaDao.buscaPorPaciente(idUsuario);
     }
     
     @GET
     @Path("/doutor/{doutor_id}")
     public Consultas encontreConsultaPorDoutor(@PathParam("doutor_id") Long idDoutor) {
-        return consultaDao.buscaPorDoutor(1l);
+        return consultaDao.buscaPorDoutor(idDoutor);
     }
     
     @GET
@@ -60,9 +60,9 @@ public class ConsultaService {
     
     @POST
     @Path("usuario/{usuario_id}")
-    public Response criarConsulta(@QueryParam("usuario_id") Long idUsuario, Consulta consulta) {
+    public Response criarConsulta(@PathParam("usuario_id") Long idUsuario, Consulta consulta) {
         try {
-            consulta.setPaciente(new UsuarioDAO().buscaPorld(1l));
+            consulta.setPaciente(new UsuarioDAO().buscaPorld(idUsuario));
             consultaDao.salva(consulta);
         } catch (ConsultaJaExisteException e) {
             throw new WebApplicationException(Status.CONFLICT);
@@ -74,7 +74,6 @@ public class ConsultaService {
     
     @PUT
     public void atualizarConsulta(Consulta consulta) {
-        consulta.setPaciente(new UsuarioDAO().buscaPorld(1l));
         consultaDao.atualiza(consulta);
     }
 
