@@ -22,3 +22,8 @@
 hs_err_pid*
 /bin/
 /build/
+/target/
+
+.project
+.classpath
+.settings
